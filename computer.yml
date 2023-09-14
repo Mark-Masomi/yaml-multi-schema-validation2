@@ -1,3 +1,5 @@
 computer:
   cpu:
+    manufacturer: msi
+    frequency: "3.5 GHz"
     cores: 8
