@@ -1,0 +1,44 @@
+name: Validate Multiple YAML Files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install -g ajv-cli yamllint
+        continue-on-error: true
+
+      - name: Validate Car YAML
+        run: |
+          yamllint car.yml  # Validate YAML syntax
+          ajv -s schemas/schema_car.json -d car.yml  # Validate against JSON schema
+
+      - name: Validate Computer YAML
+        run: |
+          yamllint computer.yml
+          ajv -s schemas/schema_computer.json -d computer.yml
+
+      - name: Validate Person YAML
+        run: |
+          yamllint person.yml
+          ajv -s schemas/schema_person.json -d person.yml
+
+      - name: Validate Schedule YAML
+        run: |
+          yamllint schedule.yml
+          ajv -s schemas/schema_schedule.json -d schedule.yml
