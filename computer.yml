@@ -1,5 +1,13 @@
 computer:
   cpu:
     manufacturer: msi
-    frequency: "3.5 GHz"
+    frequency: 3.5
     cores: 8
+  memory:
+    manufacturer: lg
+    size: 16
+    type: "fast"
+  disk: 
+    manufacturer: "intel"
+    size: 1
+    type: "ssd"
