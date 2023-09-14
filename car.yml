@@ -1,2 +1,7 @@
 car:
   manufacturer: volvo
+  model: v40
+  year: 1998
+  reg: rew212
+  attribute: 
+   - "4wd"
